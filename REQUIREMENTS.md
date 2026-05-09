@@ -31,35 +31,42 @@
         devices that can parse the packets efficiently.
     2. Creating an Intermediate Representation (IR) that can capture semantics
     of instructions and data development boards
-        a. TODO
+        a. Create instructions for querying device information.
+        b. Create instructions for input/output between boards.
+        c. Create instructions for each capability supported in the boards.
+        d. Create instructions for querying runtime information.
 
 3. Scheduling
     1. Designing and developing scheduling algorithms that will determine the
     placement of kernels across devices.
         a. Determine what are the hard and soft parameters that will be used in
-        scheduling (e.g. Capability limitations, maximum number of jobs
-        supported by a device are hard parameters, waiting time/numbers related
-        to CPU/memory usage are soft parameters).
-        b. Instrument the firmware so that it can extract information related to
-        these parameters and pass them over to the host without affecting
-        runtime behaviour.
+        scheduling (e.g. Capability limitations, maximum number of concurrent
+        threads supported by a device are hard parameters, waiting time/numbers
+        related to CPU/memory usage are soft parameters).
     2. Designing mini-schedulers that can run on the devices in case multiple
     kernels are allowed to be issued at a time.
-        a. TODO
+        a. Create watchdog timers based on approximate kernel load.
+        b. Include concepts of task priorities and CPU and IO time.
+        c. Calculate expected CPU time to be given based on whether task is I/O
+        heavy or CPU heavy.
 
 4. Infrastructure
     1. Creating suitable data structures that can keep track of information
     related to the host, devices and the links.
-        a. TODO
+        a. Keep track of jobs to device mapping.
+        b. Large jobs should have ways to be split into concurrent sub-jobs
+        scheduled on different devices.
+        c. Keep track of the link information between devices in a graph
+        structure.
     2. Identifying algorithms that that can be used to keep track of the
     topology of the connected devices.
-        a. TODO
+        a. Create suitable heuristics to help caculate optimal paths from device
+        to device.
     3. Creating firmware that runs on the development boards and interface with
     the host device at a logical level.
-        a. TODO
-    4. Developing host side software that can keep track of the state of the
-    devices and the tasks running on each device.
-        a. TODO
+    4. Developing host side software that can provide a common interface/API to
+    connect with various types of boards.
     5. Allowing debugging information of the host and devices to be accessed
     via a suitable logging format.
-        a. TODO
+        a. Host time and device time should be separate from each other.
+        b. Frequency of logging debug information should be configurable.

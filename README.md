@@ -38,7 +38,7 @@ For a more detailed requirements specification, check out REQUIREMENTS.md
     topology of the connected devices.
     - Creating firmware that runs on the development boards and interface with
     the host device at a logical level.
-    - Developing host side software that can keep track of the state of the
-    devices and the tasks running on each device.
+    - Developing host side software that can provide a common interface/API to
+    connect with various types of boards.
     - Allowing debugging information of the host and devices to be accessed
     via a suitable logging format.
